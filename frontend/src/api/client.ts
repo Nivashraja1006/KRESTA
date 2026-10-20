@@ -1,8 +1,11 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL.replace(/\/+$/, '')}/api/v1`
-  : '/api/v1';
+const API_ORIGIN = import.meta.env.VITE_API_URL?.trim();
+const API_BASE_URL = API_ORIGIN
+  ? `${API_ORIGIN.replace(/\/+$/, '')}/api/v1`
+  : import.meta.env.DEV
+    ? '/api/v1'
+    : undefined;
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
@@ -14,6 +17,12 @@ export const apiClient = axios.create({
 // Request interceptor: attach bearer token
 apiClient.interceptors.request.use(
   (config) => {
+    if (!API_BASE_URL) {
+      return Promise.reject(
+        new Error('VITE_API_URL must be configured for the production frontend.')
+      );
+    }
+
     const token = localStorage.getItem('restaurantiq_token');
     if (token && config.headers) {
       config.headers.Authorization = `Bearer ${token}`;

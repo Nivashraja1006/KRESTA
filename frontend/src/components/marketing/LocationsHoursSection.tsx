@@ -17,6 +17,18 @@ interface Branch {
   is_active: boolean;
 }
 
+function isBranch(value: unknown): value is Branch {
+  if (typeof value !== 'object' || value === null) return false;
+
+  const branch = value as Record<string, unknown>;
+  return (
+    typeof branch.id === 'number' &&
+    typeof branch.name === 'string' &&
+    typeof branch.code === 'string' &&
+    typeof branch.is_active === 'boolean'
+  );
+}
+
 export const LocationsHoursSection: React.FC = () => {
   const [branches, setBranches] = useState<Branch[]>([
     {
@@ -63,8 +75,12 @@ export const LocationsHoursSection: React.FC = () => {
   useEffect(() => {
     const fetchBranches = async () => {
       try {
-        const resp = await apiClient.get<Branch[]>('/restaurants/public/branches');
-        if (resp.data && resp.data.length > 0) {
+        const resp = await apiClient.get<unknown>('/restaurants/public/branches');
+        if (!Array.isArray(resp.data) || !resp.data.every(isBranch)) {
+          console.warn('Unexpected branch response; using seeded branch fallback.');
+          return;
+        }
+        if (resp.data.length > 0) {
           setBranches(resp.data);
         }
       } catch (err) {
@@ -198,4 +214,3 @@ export const LocationsHoursSection: React.FC = () => {
     </section>
   );
 };
-
