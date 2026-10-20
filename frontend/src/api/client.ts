@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+declare module 'axios' {
+  export interface AxiosRequestConfig {
+    _networkRetryCount?: number;
+  }
+}
+
 const API_ORIGIN = import.meta.env.VITE_API_URL?.trim();
 const API_BASE_URL = API_ORIGIN
   ? `${API_ORIGIN.replace(/\/+$/, '')}/api/v1`
@@ -9,6 +15,7 @@ const API_BASE_URL = API_ORIGIN
 
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
+  timeout: 65000,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -36,6 +43,21 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
+    const isNetworkError =
+      axios.isAxiosError(error) &&
+      !error.response &&
+      (error.code === 'ERR_NETWORK' || error.message === 'Network Error');
+    const requestConfig = error?.config;
+
+    if (
+      isNetworkError &&
+      requestConfig?.method?.toLowerCase() === 'get' &&
+      (requestConfig._networkRetryCount ?? 0) < 1
+    ) {
+      requestConfig._networkRetryCount = 1;
+      return apiClient.request(requestConfig);
+    }
+
     if (error.response && error.response.status === 401) {
       // Don't auto-redirect if checking auth or on public / customer ordering pages
       const currentPath = window.location.pathname;
