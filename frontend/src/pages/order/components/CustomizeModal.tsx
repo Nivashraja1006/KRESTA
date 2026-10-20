@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Flame, Plus, Minus, Check, SlidersHorizontal, Sparkles } from 'lucide-react';
 import { MenuItem } from '../../../types';
+import { getMenuImageUrl, handleMenuImageError } from '../menuImages';
 
 interface CustomizeModalProps {
   item: MenuItem | null;
@@ -50,8 +51,9 @@ export const CustomizeModal: React.FC<CustomizeModalProps> = ({
         {/* Header with Dish Thumbnail */}
         <div className="flex items-center gap-3.5 pb-4 border-b border-slate-800">
           <img
-            src={item.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=120&auto=format&fit=crop&q=80'}
+            src={getMenuImageUrl(item)}
             alt={item.name}
+            onError={(event) => handleMenuImageError(event, item)}
             className="h-16 w-16 rounded-2xl object-cover border border-slate-700"
           />
           <div>
@@ -151,4 +153,3 @@ export const CustomizeModal: React.FC<CustomizeModalProps> = ({
     </div>
   );
 };
-

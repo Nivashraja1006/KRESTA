@@ -9,6 +9,7 @@ import {
   Check
 } from 'lucide-react';
 import { MenuItem } from '../../../types';
+import { getMenuImageUrl, handleMenuImageError } from '../menuImages';
 
 interface FoodCardProps {
   item: MenuItem;
@@ -41,8 +42,9 @@ export const FoodCard: React.FC<FoodCardProps> = ({
         {/* Food Image Container */}
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-950">
           <img
-            src={item.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80'}
+            src={getMenuImageUrl(item)}
             alt={item.name}
+            onError={(event) => handleMenuImageError(event, item)}
             className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             loading="lazy"
           />
@@ -195,4 +197,3 @@ export const FoodCard: React.FC<FoodCardProps> = ({
     </div>
   );
 };
-

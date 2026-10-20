@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { MenuItem } from '../../../types';
 import { useCart } from '../../../context/CartContext';
+import { getMenuImageUrl, handleMenuImageError } from '../menuImages';
 
 interface FoodDetailModalProps {
   item: MenuItem | null;
@@ -78,8 +79,9 @@ export const FoodDetailModal: React.FC<FoodDetailModalProps> = ({
         {/* Header Image */}
         <div className="relative h-60 sm:h-72 w-full flex-shrink-0 bg-slate-900">
           <img
-            src={item.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=900&auto=format&fit=crop&q=80'}
+            src={getMenuImageUrl(item)}
             alt={item.name}
+            onError={(event) => handleMenuImageError(event, item)}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c101d] via-[#0c101d]/30 to-black/40" />

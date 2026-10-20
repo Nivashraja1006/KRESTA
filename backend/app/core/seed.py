@@ -32,6 +32,34 @@ DEMO_USERS = [
     ('customer@restaurantiq.com', 'Elena Rostova', 'customer', False),
 ]
 
+
+def _default_menu_image_url(name: str, category_name: str) -> str:
+    dish_name = name.lower()
+    category = category_name.lower()
+    if any(word in dish_name for word in ("chai", "tea", "coffee", "latte", "lassi")):
+        image_category = "beverages"
+    elif any(word in dish_name for word in ("dessert", "sweet", "gulab", "jamun")):
+        image_category = "desserts"
+    elif any(word in dish_name for word in ("naan", "roti", "bread")):
+        image_category = "breads"
+    elif any(word in dish_name for word in ("biryani", "curry", "rogan josh")):
+        image_category = "mains"
+    elif any(word in dish_name for word in ("starter", "appetizer", "bites", "skewer")):
+        image_category = "starters"
+    elif any(word in category for word in ("beverage", "drink")):
+        image_category = "beverages"
+    elif any(word in category for word in ("dessert", "sweet")):
+        image_category = "desserts"
+    elif "bread" in category:
+        image_category = "breads"
+    elif any(word in category for word in ("starter", "appetizer")):
+        image_category = "starters"
+    else:
+        image_category = "mains"
+
+    return f"/static/menu-fallbacks/{image_category}.svg"
+
+
 def _ensure_demo_users(db: Session, restaurant_id: int | None, branch_id: int | None) -> None:
     if not settings.DEMO_USER_PASSWORD:
         print("Skipping demo-user seeding because DEMO_USER_PASSWORD is not configured.")
@@ -233,6 +261,7 @@ def seed_database(db: Session = None, force: bool = False) -> None:
         ]
         db.add_all(categories)
         db.flush()
+        category_names = {category.id: category.name for category in categories}
 
         # 7. Menu Items & Recipes Mapping
         menu_items_data = [
@@ -312,7 +341,7 @@ def seed_database(db: Session = None, force: bool = False) -> None:
                 price=pr,
                 cost_price=c_pr,
                 preparation_time_minutes=prep,
-                image_url=f"https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=600&auto=format&fit=crop&q=80",
+                image_url=_default_menu_image_url(name, category_names[cat_id]),
                 is_available=avail,
                 is_vegetarian=veg,
                 calories=cals

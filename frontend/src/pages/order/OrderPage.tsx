@@ -22,6 +22,7 @@ import apiClient from '../../api/client';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { MenuItem, Category } from '../../types';
+import { getMenuImageUrl, handleMenuImageError } from './menuImages';
 
 import { CustomerNavbar } from '../../components/customer/CustomerNavbar';
 import { CustomerFooter } from '../../components/customer/CustomerFooter';
@@ -286,8 +287,9 @@ export const OrderPage: React.FC = () => {
                   className="group cursor-pointer rounded-2xl bg-[#0d1222]/90 border border-white/10 p-3 flex items-center gap-3.5 hover:border-emerald-500/50 hover:bg-[#12182c] transition-all shadow-md"
                 >
                   <img
-                    src={item.image_url}
+                    src={getMenuImageUrl(item)}
                     alt={item.name}
+                    onError={(event) => handleMenuImageError(event, item)}
                     className="w-16 h-16 rounded-xl object-cover border border-white/10 flex-shrink-0 group-hover:scale-105 transition-transform"
                   />
                   <div className="flex-1 truncate">
@@ -449,8 +451,9 @@ export const OrderPage: React.FC = () => {
                     className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-900 cursor-pointer"
                   >
                     <img
-                      src={item.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80'}
+                      src={getMenuImageUrl(item)}
                       alt={item.name}
+                      onError={(event) => handleMenuImageError(event, item)}
                       className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0c101d] via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity" />

@@ -18,6 +18,7 @@ import {
 import { useCart } from '../../context/CartContext';
 import { CustomerNavbar } from '../../components/customer/CustomerNavbar';
 import { CustomerFooter } from '../../components/customer/CustomerFooter';
+import { getMenuImageUrl, handleMenuImageError } from './menuImages';
 
 export const CartPage: React.FC = () => {
   const navigate = useNavigate();
@@ -182,8 +183,9 @@ export const CartPage: React.FC = () => {
                         {/* Item Photo & Details */}
                         <div className="flex items-center gap-4">
                           <img
-                            src={item.menuItem.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&auto=format&fit=crop&q=80'}
+                            src={getMenuImageUrl(item.menuItem)}
                             alt={item.menuItem.name}
+                            onError={(event) => handleMenuImageError(event, item.menuItem)}
                             className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border border-white/10 flex-shrink-0"
                           />
                           <div>

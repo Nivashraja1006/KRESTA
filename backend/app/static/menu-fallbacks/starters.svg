@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#683b2a"/>
+      <stop offset="1" stop-color="#241a1c"/>
+    </linearGradient>
+    <linearGradient id="bite" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f5bd6b"/>
+      <stop offset="1" stop-color="#c66338"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#bg)"/>
+  <circle cx="300" cy="177" r="120" fill="#ecaa6b" opacity=".12"/>
+  <ellipse cx="300" cy="270" rx="157" ry="47" fill="#f2e6d4"/>
+  <path d="M190 261c13-42 42-58 69-37s19 52 0 66-55 5-69-29zm83-39c15-40 45-51 68-28s15 54-6 65-54-1-62-37zm81 25c11-38 38-51 63-32s21 49 2 64-52 5-65-32z" fill="url(#bite)" stroke="#ffda9c" stroke-width="6"/>
+  <path d="M206 247l28-13m-8 39 32-18m32-39 26-14m-18 39 34-16m43 24 29-14" stroke="#fff0c8" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+  <text x="300" y="348" fill="#f8e7c6" font-family="Arial,sans-serif" font-size="21" font-weight="700" letter-spacing="5" text-anchor="middle">STARTERS</text>
+</svg>

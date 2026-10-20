@@ -13,6 +13,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { CartItem, CartValidation } from '../../../types';
+import { getMenuImageUrl, handleMenuImageError } from '../menuImages';
 
 interface CartDrawerProps {
   items: CartItem[];
@@ -157,8 +158,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 className="flex items-start justify-between gap-3 p-3 rounded-2xl bg-slate-950/80 border border-slate-800/80 hover:border-slate-700/80 transition-all group"
               >
                 <img
-                  src={item.image_url || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=120&auto=format&fit=crop&q=80'}
+                  src={getMenuImageUrl(item)}
                   alt={item.name}
+                  onError={(event) => handleMenuImageError(event, item)}
                   className="h-12 w-12 rounded-xl object-cover border border-slate-800 shrink-0 mt-0.5"
                 />
 
@@ -327,4 +329,3 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
     </div>
   );
 };
-

@@ -22,6 +22,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
 import { Order, MenuItem } from '../../types';
 import { CustomerNavbar } from '../../components/customer/CustomerNavbar';
+import { getMenuImageUrl, handleMenuImageError } from './menuImages';
 import { CustomerFooter } from '../../components/customer/CustomerFooter';
 
 export const AccountPage: React.FC = () => {
@@ -380,8 +381,9 @@ export const AccountPage: React.FC = () => {
                 {favoriteItems.map((item) => (
                   <div key={item.id} className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm flex flex-col justify-between">
                     <img
-                      src={item.image_url}
+                      src={getMenuImageUrl(item)}
                       alt={item.name}
+                      onError={(event) => handleMenuImageError(event, item)}
                       className="h-44 w-full object-cover"
                     />
                     <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
@@ -459,4 +461,3 @@ export const AccountPage: React.FC = () => {
     </div>
   );
 };
-
