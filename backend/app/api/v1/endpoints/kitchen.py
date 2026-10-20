@@ -4,10 +4,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.models import Order, OrderItem, User
-from backend.app.api.deps import require_roles, get_current_active_user
-from backend.app.core.websocket_manager import ws_manager
+from app.core.database import get_db
+from app.models import Order, OrderItem, User
+from app.api.deps import require_roles, get_current_active_user
+from app.core.websocket_manager import ws_manager
 
 router = APIRouter()
 

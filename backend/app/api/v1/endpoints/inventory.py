@@ -5,15 +5,15 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.models import (
+from app.core.database import get_db
+from app.models import (
     Ingredient, InventoryTransaction, PurchaseOrder, PurchaseOrderItem, Supplier, User
 )
-from backend.app.schemas.inventory import (
+from app.schemas.inventory import (
     InventoryHealthItem, InventoryTransactionCreate, InventoryTransactionResponse,
     PurchaseOrderCreate, PurchaseOrderUpdate, PurchaseOrderResponse
 )
-from backend.app.api.deps import require_roles, get_current_active_user, log_audit_event
+from app.api.deps import require_roles, get_current_active_user, log_audit_event
 
 router = APIRouter()
 

@@ -3,11 +3,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.models import AnomalyRecord, User
-from backend.app.schemas.analytics_ai import AnomalyResponse
-from backend.app.api.deps import get_current_active_user, require_roles
-from backend.app.ml.anomaly import anomaly_detector
+from app.core.database import get_db
+from app.models import AnomalyRecord, User
+from app.schemas.analytics_ai import AnomalyResponse
+from app.api.deps import get_current_active_user, require_roles
+from app.ml.anomaly import anomaly_detector
 
 router = APIRouter()
 

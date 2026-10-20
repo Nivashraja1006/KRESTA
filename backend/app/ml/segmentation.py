@@ -7,7 +7,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 from sqlalchemy.orm import Session
 
-from backend.app.models import Customer, CustomerSegment
+from app.models import Customer, CustomerSegment
 
 logger = logging.getLogger(__name__)
 

@@ -8,7 +8,7 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
-from backend.app.models import Order, OrderItem, MenuItem, DemandPrediction
+from app.models import Order, OrderItem, MenuItem, DemandPrediction
 
 logger = logging.getLogger(__name__)
 

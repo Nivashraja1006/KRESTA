@@ -4,12 +4,12 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.app.core.config import settings
-from backend.app.core.database import SessionLocal, engine, Base
-from backend.app.core.init_db import init_db
-from backend.app.core.seed import seed_database
-from backend.app.core.websocket_manager import ws_manager
-from backend.app.api.v1.api import api_router
+from app.core.config import settings
+from app.core.database import SessionLocal, engine, Base
+from app.core.init_db import init_db
+from app.core.seed import seed_database
+from app.core.websocket_manager import ws_manager
+from app.api.v1.api import api_router
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

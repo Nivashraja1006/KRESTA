@@ -123,14 +123,17 @@ backend\venv\Scripts\activate
 # Linux/macOS:
 source backend/venv/bin/activate
 
-# Install requirements
-pip install -r backend/requirements.txt
+# Run backend commands from the backend package root
+cd backend
 
-# Run database migrations and seed realistic dataset
-python backend/app/core/seed.py
+# Install requirements
+pip install -r requirements.txt
+
+# Seed realistic dataset
+python -m app.core.seed
 
 # Start FastAPI backend server
-uvicorn backend.app.main:app --host 0.0.0.0 --port 8080 --reload
+uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
 ```
 API Documentation will be live at: [http://localhost:8080/docs](http://localhost:8080/docs)
 

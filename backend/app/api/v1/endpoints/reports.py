@@ -5,10 +5,10 @@ from fastapi import APIRouter, Depends, Query, Response
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 
-from backend.app.core.database import get_db
-from backend.app.models import Order, Ingredient, WasteRecord, AuditLog, User
-from backend.app.schemas.user import AuditLogResponse
-from backend.app.api.deps import require_roles, get_current_active_user
+from app.core.database import get_db
+from app.models import Order, Ingredient, WasteRecord, AuditLog, User
+from app.schemas.user import AuditLogResponse
+from app.api.deps import require_roles, get_current_active_user
 from typing import List
 
 router = APIRouter()

@@ -3,10 +3,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.models import Notification, User
-from backend.app.schemas.analytics_ai import NotificationResponse
-from backend.app.api.deps import get_current_active_user
+from app.core.database import get_db
+from app.models import Notification, User
+from app.schemas.analytics_ai import NotificationResponse
+from app.api.deps import get_current_active_user
 
 router = APIRouter()
 

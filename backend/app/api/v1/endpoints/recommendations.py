@@ -2,10 +2,10 @@ from typing import List, Dict, Any, Optional
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.models import User
-from backend.app.services.inventory_optimizer import inventory_optimizer
-from backend.app.api.deps import get_current_active_user
+from app.core.database import get_db
+from app.models import User
+from app.services.inventory_optimizer import inventory_optimizer
+from app.api.deps import get_current_active_user
 
 router = APIRouter()
 

@@ -2,11 +2,11 @@ from typing import List, Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.core.security import get_password_hash
-from backend.app.models import User, Role
-from backend.app.schemas.user import UserCreate, UserUpdate, UserResponse, RoleResponse
-from backend.app.api.deps import require_roles, require_superuser, get_current_active_user, log_audit_event
+from app.core.database import get_db
+from app.core.security import get_password_hash
+from app.models import User, Role
+from app.schemas.user import UserCreate, UserUpdate, UserResponse, RoleResponse
+from app.api.deps import require_roles, require_superuser, get_current_active_user, log_audit_event
 
 router = APIRouter()
 

@@ -1,8 +1,8 @@
 import logging
 from sqlalchemy.orm import Session
-from backend.app.core.database import Base, engine
-from backend.app.models import Role, Permission, User
-from backend.app.core.security import get_password_hash
+from app.core.database import Base, engine
+from app.models import Role, Permission, User
+from app.core.security import get_password_hash
 
 logger = logging.getLogger(__name__)
 

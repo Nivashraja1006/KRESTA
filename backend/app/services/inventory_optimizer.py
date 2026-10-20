@@ -2,8 +2,8 @@ from typing import List, Dict, Any
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
-from backend.app.models import Ingredient, MenuItemIngredient, Supplier
-from backend.app.ml.forecasting import forecaster
+from app.models import Ingredient, MenuItemIngredient, Supplier
+from app.ml.forecasting import forecaster
 
 
 class InventoryOptimizer:

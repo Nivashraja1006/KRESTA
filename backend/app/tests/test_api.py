@@ -1,14 +1,14 @@
 import pytest
 import secrets
 from fastapi.testclient import TestClient
-from backend.app.main import app
-from backend.app.core.database import SessionLocal
-from backend.app.core.init_db import init_db
-from backend.app.core.security import get_password_hash
-from backend.app.core.seed import seed_database
-from backend.app.models import User
+from app.main import app
+from app.core.database import SessionLocal
+from app.core.init_db import init_db
+from app.core.security import get_password_hash
+from app.core.seed import seed_database
+from app.models import User
 
-from backend.app.core.config import settings
+from app.core.config import settings
 
 TEST_DEMO_PASSWORD = secrets.token_urlsafe(32)
 settings.DEMO_USER_PASSWORD = TEST_DEMO_PASSWORD

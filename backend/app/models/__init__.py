@@ -1,11 +1,11 @@
-from backend.app.core.database import Base
-from backend.app.models.user import Role, Permission, User, AuditLog, role_permissions
-from backend.app.models.restaurant import Restaurant, Branch, RestaurantTable
-from backend.app.models.menu import Category, Ingredient, MenuItem, MenuItemIngredient
-from backend.app.models.inventory import Supplier, InventoryTransaction, PurchaseOrder, PurchaseOrderItem
-from backend.app.models.order import Customer, Order, OrderItem, Payment
-from backend.app.models.feedback_waste import Review, ReviewSentiment, WasteRecord
-from backend.app.models.analytics_ai import DemandPrediction, CustomerSegment, AnomalyRecord, AIInsight, Notification
+from app.core.database import Base
+from app.models.user import Role, Permission, User, AuditLog, role_permissions
+from app.models.restaurant import Restaurant, Branch, RestaurantTable
+from app.models.menu import Category, Ingredient, MenuItem, MenuItemIngredient
+from app.models.inventory import Supplier, InventoryTransaction, PurchaseOrder, PurchaseOrderItem
+from app.models.order import Customer, Order, OrderItem, Payment
+from app.models.feedback_waste import Review, ReviewSentiment, WasteRecord
+from app.models.analytics_ai import DemandPrediction, CustomerSegment, AnomalyRecord, AIInsight, Notification
 
 __all__ = [
     "Base",

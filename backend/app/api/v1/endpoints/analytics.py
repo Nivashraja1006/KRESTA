@@ -4,13 +4,13 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 
-from backend.app.core.database import get_db
-from backend.app.models import (
+from app.core.database import get_db
+from app.models import (
     Order, OrderItem, MenuItem, Customer, WasteRecord, Ingredient,
     AnomalyRecord, AIInsight, User
 )
-from backend.app.schemas.analytics_ai import DashboardOverviewResponse, AIInsightResponse
-from backend.app.api.deps import get_current_active_user
+from app.schemas.analytics_ai import DashboardOverviewResponse, AIInsightResponse
+from app.api.deps import get_current_active_user
 
 router = APIRouter()
 

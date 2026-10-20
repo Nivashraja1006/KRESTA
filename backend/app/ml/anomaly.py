@@ -7,7 +7,7 @@ from sklearn.ensemble import IsolationForest
 from sqlalchemy.orm import Session
 from sqlalchemy import func
 
-from backend.app.models import Order, WasteRecord, AnomalyRecord
+from app.models import Order, WasteRecord, AnomalyRecord
 
 logger = logging.getLogger(__name__)
 

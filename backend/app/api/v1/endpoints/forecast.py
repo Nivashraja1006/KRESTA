@@ -3,11 +3,11 @@ from typing import Dict, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.models import MenuItem, DemandPrediction, User
-from backend.app.schemas.analytics_ai import ForecastResponse
-from backend.app.api.deps import get_current_active_user, require_roles
-from backend.app.ml.forecasting import forecaster
+from app.core.database import get_db
+from app.models import MenuItem, DemandPrediction, User
+from app.schemas.analytics_ai import ForecastResponse
+from app.api.deps import get_current_active_user, require_roles
+from app.ml.forecasting import forecaster
 
 router = APIRouter()
 

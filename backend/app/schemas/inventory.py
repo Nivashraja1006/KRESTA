@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel, EmailStr
-from backend.app.schemas.menu import IngredientResponse
+from app.schemas.menu import IngredientResponse
 
 
 class SupplierBase(BaseModel):

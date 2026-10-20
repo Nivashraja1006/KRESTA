@@ -2,10 +2,10 @@ from typing import List, Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.models import Supplier, User
-from backend.app.schemas.inventory import SupplierCreate, SupplierResponse
-from backend.app.api.deps import require_roles, get_current_active_user, log_audit_event
+from app.core.database import get_db
+from app.models import Supplier, User
+from app.schemas.inventory import SupplierCreate, SupplierResponse
+from app.api.deps import require_roles, get_current_active_user, log_audit_event
 
 router = APIRouter()
 

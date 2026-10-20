@@ -4,10 +4,10 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc, func
 
-from backend.app.core.database import get_db
-from backend.app.models import WasteRecord, MenuItem, Ingredient, User
-from backend.app.schemas.feedback_waste import WasteRecordCreate, WasteRecordResponse
-from backend.app.api.deps import get_current_active_user, require_roles, log_audit_event
+from app.core.database import get_db
+from app.models import WasteRecord, MenuItem, Ingredient, User
+from app.schemas.feedback_waste import WasteRecordCreate, WasteRecordResponse
+from app.api.deps import get_current_active_user, require_roles, log_audit_event
 
 router = APIRouter()
 

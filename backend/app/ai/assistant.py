@@ -4,9 +4,9 @@ from typing import Dict, Any, List, Optional
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 
-from backend.app.models import Order, OrderItem, MenuItem, Ingredient, WasteRecord, Customer
-from backend.app.ml.forecasting import forecaster
-from backend.app.services.inventory_optimizer import inventory_optimizer
+from app.models import Order, OrderItem, MenuItem, Ingredient, WasteRecord, Customer
+from app.ml.forecasting import forecaster
+from app.services.inventory_optimizer import inventory_optimizer
 
 
 class GroundedAIAssistant:

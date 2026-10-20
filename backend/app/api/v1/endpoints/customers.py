@@ -3,12 +3,12 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.models import Customer, CustomerSegment, User
-from backend.app.schemas.order import CustomerCreate, CustomerResponse
-from backend.app.schemas.analytics_ai import CustomerSegmentResponse
-from backend.app.api.deps import get_current_active_user, require_roles
-from backend.app.ml.segmentation import customer_segmenter
+from app.core.database import get_db
+from app.models import Customer, CustomerSegment, User
+from app.schemas.order import CustomerCreate, CustomerResponse
+from app.schemas.analytics_ai import CustomerSegmentResponse
+from app.api.deps import get_current_active_user, require_roles
+from app.ml.segmentation import customer_segmenter
 
 router = APIRouter()
 

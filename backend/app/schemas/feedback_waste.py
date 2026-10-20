@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel
-from backend.app.schemas.menu import MenuItemResponse, IngredientResponse
+from app.schemas.menu import MenuItemResponse, IngredientResponse
 
 
 class ReviewCreate(BaseModel):

@@ -3,11 +3,11 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from sqlalchemy import desc, func
 
-from backend.app.core.database import get_db
-from backend.app.models import Review, ReviewSentiment, User
-from backend.app.schemas.feedback_waste import ReviewCreate, ReviewResponse
-from backend.app.api.deps import get_current_active_user, require_roles
-from backend.app.ml.sentiment import sentiment_analyzer
+from app.core.database import get_db
+from app.models import Review, ReviewSentiment, User
+from app.schemas.feedback_waste import ReviewCreate, ReviewResponse
+from app.api.deps import get_current_active_user, require_roles
+from app.ml.sentiment import sentiment_analyzer
 
 router = APIRouter()
 

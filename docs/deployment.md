@@ -32,9 +32,9 @@ Deploy the frontend and backend as separate services. The repository includes a 
 
 ### Render (backend)
 
-1. Create the web service from the repository root and use the committed `render.yaml` blueprint, or configure its commands directly:
-   - Build: `pip install -r backend/requirements.txt`
-   - Start: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
+1. Create the web service using the committed `render.yaml` blueprint, or set its Root Directory to `backend` and configure:
+   - Build: `pip install -r requirements.txt`
+   - Start: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 2. Create a managed PostgreSQL database and set `DATABASE_URL` to its private/internal connection URL.
 3. Set `BACKEND_CORS_ORIGINS` to a JSON array containing the exact Vercel origin, such as `["https://<project>.vercel.app"]`.
 4. The blueprint generates `SECRET_KEY`. Keep it and `DATABASE_URL` in Render's secret environment settings.

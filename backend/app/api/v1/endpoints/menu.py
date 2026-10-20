@@ -2,14 +2,14 @@ from typing import List, Any, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.models import Category, MenuItem, Ingredient, MenuItemIngredient, User
-from backend.app.schemas.menu import (
+from app.core.database import get_db
+from app.models import Category, MenuItem, Ingredient, MenuItemIngredient, User
+from app.schemas.menu import (
     CategoryCreate, CategoryResponse,
     MenuItemCreate, MenuItemUpdate, MenuItemResponse,
     IngredientCreate, IngredientResponse
 )
-from backend.app.api.deps import require_roles, get_current_active_user, get_optional_current_user, log_audit_event
+from app.api.deps import require_roles, get_current_active_user, get_optional_current_user, log_audit_event
 
 router = APIRouter()
 

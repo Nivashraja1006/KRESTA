@@ -5,18 +5,18 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 from sqlalchemy import desc
 
-from backend.app.core.database import get_db
-from backend.app.core.websocket_manager import ws_manager
-from backend.app.models import (
+from app.core.database import get_db
+from app.core.websocket_manager import ws_manager
+from app.models import (
     Order, OrderItem, MenuItem, Payment, Customer, Ingredient,
     InventoryTransaction, Restaurant, Branch, User, RestaurantTable
 )
-from backend.app.schemas.order import (
+from app.schemas.order import (
     OrderCreate, OrderStatusUpdate, OrderResponse, PaymentCreate,
     CustomerOrderCreate, CartValidationRequest, CartValidationResponse,
     OrderTrackingResponse, OrderTimelineStep
 )
-from backend.app.api.deps import get_current_active_user, require_roles, log_audit_event
+from app.api.deps import get_current_active_user, require_roles, log_audit_event
 
 router = APIRouter()
 

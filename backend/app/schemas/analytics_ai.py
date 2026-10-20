@@ -1,8 +1,8 @@
 from datetime import datetime
 from typing import Optional, List, Dict, Any
 from pydantic import BaseModel
-from backend.app.schemas.menu import MenuItemResponse
-from backend.app.schemas.order import CustomerResponse
+from app.schemas.menu import MenuItemResponse
+from app.schemas.order import CustomerResponse
 
 
 class DemandPredictionResponse(BaseModel):

@@ -1,0 +1,1 @@
+"""KRESTA FastAPI application package."""

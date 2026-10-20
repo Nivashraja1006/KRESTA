@@ -9,18 +9,18 @@ sys.path.insert(0, os.path.abspath("."))
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
-from backend.app.core.config import settings
-from backend.app.core.database import SessionLocal
-from backend.app.core.security import get_password_hash, verify_password
-from backend.app.models import (
+from app.core.config import settings
+from app.core.database import SessionLocal
+from app.core.security import get_password_hash, verify_password
+from app.models import (
     Role, User, Restaurant, Branch, RestaurantTable, Category,
     Ingredient, MenuItem, MenuItemIngredient, Supplier, Customer,
     Order, OrderItem, Payment, Review, ReviewSentiment, WasteRecord,
     AIInsight, Notification
 )
-from backend.app.ml.sentiment import sentiment_analyzer
-from backend.app.ml.segmentation import customer_segmenter
-from backend.app.ml.anomaly import anomaly_detector
+from app.ml.sentiment import sentiment_analyzer
+from app.ml.segmentation import customer_segmenter
+from app.ml.anomaly import anomaly_detector
 
 
 DEMO_USERS = [

@@ -2,13 +2,13 @@ from typing import List, Any
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from backend.app.core.database import get_db
-from backend.app.models import Restaurant, Branch, RestaurantTable, User
-from backend.app.schemas.restaurant import (
+from app.core.database import get_db
+from app.models import Restaurant, Branch, RestaurantTable, User
+from app.schemas.restaurant import (
     RestaurantCreate, RestaurantResponse, BranchCreate, BranchResponse,
     RestaurantTableCreate, RestaurantTableResponse
 )
-from backend.app.api.deps import require_roles, get_current_active_user, log_audit_event
+from app.api.deps import require_roles, get_current_active_user, log_audit_event
 
 router = APIRouter()
 
