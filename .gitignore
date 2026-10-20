@@ -1,0 +1,47 @@
+# Environment files and secrets
+.env
+.env.*
+*.env
+!.env.example
+**/.env
+**/.env.*
+**/*.env
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Node and build output
+/package-lock.json
+node_modules/
+dist/
+build/
+coverage/
+.coverage
+.coverage.*
+
+# Logs and OS files
+*.log
+*.pem
+*.key
+*.p12
+*.pfx
+*.secret
+secrets.*
+credentials.json
+.DS_Store
+Thumbs.db
